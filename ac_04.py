@@ -15,7 +15,7 @@ class Pessoa:
     def get_rg(self):
         return self.__rg
 
-    def set_rg(self):
+    def set_rg(self, rg):
         self.__rg = rg
         return self.__rg
 
