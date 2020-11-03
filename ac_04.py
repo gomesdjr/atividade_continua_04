@@ -1,9 +1,3 @@
-# INSIRA ABAIXO OS NOMES DOS ALUNOS DO GRUPO (máximo 5 alunos)
-# ALUNO 1: Raphael Sousa Silva      RA:1904217
-# ALUNO 2: Diego Junior Gomes       RA:1904172
-# ALUNO 3: Bruno Loures M. De Souza RA:1904113
-
-
 class Pessoa():
     def __init__(self, cpf, rg,  nome, telefone):
         self.__cpf = cpf
