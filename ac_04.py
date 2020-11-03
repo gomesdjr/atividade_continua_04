@@ -3,10 +3,8 @@
 # ALUNO 2: Diego Junior Gomes       RA:1904172
 # ALUNO 3: Bruno Loures M. De Souza RA:1904113
 
-from abc import ABC
 
-
-class Pessoa(ABC):
+class Pessoa():
     def __init__(self, cpf, rg,  nome, telefone):
         self.__cpf = cpf
         self.__rg = rg
@@ -19,6 +17,12 @@ class Pessoa(ABC):
     def get_cpf(self):
         return self.__cpf
 
+    def set_rg(self, rg):
+        self.__rg = rg
+
+    def set_cpf(self, cpf):
+        self.__cpf = cpf
+
 
 class Medico(Pessoa):
     def __init__(self, crm, cpf, rg, nome, telefone, salario):
@@ -30,8 +34,20 @@ class Medico(Pessoa):
     def get_crm(self):
         return self.__crm
 
+    def set_crm(self, crm):
+        self.__crm = crm
+
     def set_especialidade(self, especialidade):
         self.especialidade = especialidade
+
+    def exibir_medico(self, medico):
+        print("Nome médico:", medico.nome)
+        print("Rg medico:", medico.get_rg())
+        print("Cpf medico:", medico.get_cpf())
+        print("Telefone:", medico.telefone)
+        print("CRM:", medico.get_crm())
+        print("Salário:", medico.salario)
+        print("Especialidade:", medico.especialidade)
 
 
 class Paciente(Pessoa):
@@ -46,8 +62,18 @@ class Paciente(Pessoa):
     def get_endereco(self):
         return self.__endereco
 
+    def set_endereco(self, endereco):
+        self.__endereco = endereco
+
     def set_historico(self, historico):
         self.historico = historico
+
+    def exibir_paciente(self, paciente):
+        print("Paciente:", paciente_1.nome)
+        print("Medico responsavel:", paciente.medico_responsavel.nome)
+        print("Rg paciente:", paciente.get_rg())
+        print("Cpf paciente:", paciente.get_cpf())
+        print("Endereço:", paciente.get_endereco())
 
 
 class Quarto:
@@ -80,27 +106,17 @@ class Historico:
         print("Medico:", self.medico.nome)
 
 
-medico_1 = Medico('135678', '275.290.310-01', '9752417-5',
-                  'Raphael Sousa', '96378-4153', 8500)
-medico_1.set_especialidade('Neurologista')
-print("Nome médico:", medico_1.nome)
-print("Rg medico:", medico_1.get_rg())
-print("Cpf medico:", medico_1.get_cpf())
-print("Telefone:", medico_1.telefone)
-print("CRM:", medico_1.get_crm())
-print("Salário:", medico_1.salario)
-print("Especialidade:", medico_1.especialidade)
+medico_1 = Medico("135678", "275.290.310-01", "9752417-5",
+                  "Raphael Sousa", "96378-4153", 8500)
+medico_1.set_especialidade("Neurologista")
+medico_1.exibir_medico(medico_1)
 print("---------------------------------")
 
 
-paciente_1 = Paciente('Bruno Loures', '15276-5', '185.220.345-77',
-                      'Rua São Carlos, 214', '97521-8890', '12/12/1990',
+paciente_1 = Paciente("Bruno Loures", "15276-5", "185.220.345-77",
+                      "Rua São Carlos, 214", "97521-8890", "12/12/1990",
                       medico_1)
-print("Paciente:", paciente_1.nome)
-print("Medico responsavel:", paciente_1.medico_responsavel.nome)
-print("Rg paciente:", paciente_1.get_rg())
-print("Cpf paciente:", paciente_1.get_cpf())
-print("Endereço:", paciente_1.get_endereco())
+paciente_1.exibir_paciente(paciente_1)
 print("---------------------------------")
 
 
@@ -110,7 +126,8 @@ print("---------------------------------")
 
 
 historico_1 = Historico()
-historico_1.set_observacoes('15/10/2020', '12:33',
-                            'Paciente necessita de novos exames', medico_1)
+historico_1.set_observacoes("15/10/2020", "12:33",
+                            "Paciente necessita de novos exames",
+                            medico_1)
 historico_1.exibir_observacoes()
 paciente_1.set_historico(historico_1)
